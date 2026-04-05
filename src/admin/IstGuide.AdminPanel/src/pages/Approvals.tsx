@@ -6,7 +6,7 @@ const Approvals: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   const fetchPending = () => {
-    api.get('/guides/admin?status=1') // 1 = Pending (Örneğin)
+    api.get('/guides/admin?status=0') // 1 = Pending (Örneğin)
       .then(res => {
         if (res.data) {
           setGuides(res.data);
