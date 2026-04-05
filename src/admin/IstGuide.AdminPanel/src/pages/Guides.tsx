@@ -16,7 +16,7 @@ const Guides: React.FC = () => {
 
     const fetchGuides = () => {
         setLoading(true);
-        api.get('/guides/admin').then(res => {
+        api.get('https://istguideme.runasp.net/api/admin/guides').then(res => {
             if (res.data) {
                 setGuides(res.data);
             }
@@ -45,7 +45,7 @@ const Guides: React.FC = () => {
     const handleDeleteGuide = async (id: string) => {
         if (!confirm('Are you sure you want to delete this guide?')) return;
         try {
-            await api.delete(`/guides/${id}`);
+            await api.delete(`https://istguideme.runasp.net/api/admin/guides/${id}`);
             alert('Guide deleted successfully!');
             fetchGuides();
         } catch (err) {
