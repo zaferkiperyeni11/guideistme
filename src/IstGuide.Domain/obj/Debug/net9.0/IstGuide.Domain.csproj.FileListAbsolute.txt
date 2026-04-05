@@ -1,0 +1,11 @@
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\bin\Debug\net9.0\IstGuide.Domain.deps.json
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\bin\Debug\net9.0\IstGuide.Domain.dll
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\bin\Debug\net9.0\IstGuide.Domain.pdb
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\obj\Debug\net9.0\IstGuide.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\obj\Debug\net9.0\IstGuide.Domain.AssemblyInfoInputs.cache
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\obj\Debug\net9.0\IstGuide.Domain.AssemblyInfo.cs
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\obj\Debug\net9.0\IstGuide.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\obj\Debug\net9.0\IstGuide.Domain.dll
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\obj\Debug\net9.0\refint\IstGuide.Domain.dll
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\obj\Debug\net9.0\IstGuide.Domain.pdb
+C:\Users\Zafer\Downloads\guideistme\src\IstGuide.Domain\obj\Debug\net9.0\ref\IstGuide.Domain.dll

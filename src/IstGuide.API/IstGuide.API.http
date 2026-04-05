@@ -1,0 +1,6 @@
+@IstGuide.API_HostAddress = http://localhost:5217
+
+GET {{IstGuide.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

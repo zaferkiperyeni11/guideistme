@@ -1,0 +1,388 @@
+{
+  "info": {
+    "_postman_id": "istguide-crud-collection",
+    "name": "IstGuide API - Guide CRUD Operations",
+    "description": "Test collection for Guide Create, Update, Delete operations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Guide CRUD - Public",
+      "item": [
+        {
+          "name": "1. Create Guide (Register)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Ahmet\",\n  \"lastName\": \"Yilmaz\",\n  \"email\": \"ahmet.yilmaz@example.com\",\n  \"phoneNumber\": \"+905321234567\",\n  \"title\": \"Licensed Tour Guide\",\n  \"bio\": \"10 years of professional tour guiding experience in Istanbul\",\n  \"detailedDescription\": \"Expert in Byzantine history and Ottoman architecture. Fluent in English and German.\",\n  \"yearsOfExperience\": 10,\n  \"gender\": 0,\n  \"dateOfBirth\": \"1990-01-15T00:00:00Z\",\n  \"licenseNumber\": \"LIC123456\",\n  \"languageIds\": [\n    \"00000000-0000-0000-0000-000000000001\"\n  ],\n  \"specialtyIds\": [\n    \"00000000-0000-0000-0000-000000000001\"\n  ],\n  \"districtIds\": [\n    \"00000000-0000-0000-0000-000000000001\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/guides/register",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "guides", "register"]
+            },
+            "description": "Create a new guide (register)\n- No authentication required\n- Returns guide ID on success\n- Status: 201 Created"
+          },
+          "response": []
+        },
+        {
+          "name": "2. Update Guide Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Senior Tour Guide\",\n  \"bio\": \"15 years of professional tour guiding experience\",\n  \"detailedDescription\": \"Expert in Byzantine, Ottoman and modern Istanbul history. Specializing in historical walks and cultural tours.\",\n  \"yearsOfExperience\": 15,\n  \"licenseNumber\": \"LIC654321\",\n  \"languageIds\": [\n    \"00000000-0000-0000-0000-000000000001\",\n    \"00000000-0000-0000-0000-000000000002\"\n  ],\n  \"specialtyIds\": [\n    \"00000000-0000-0000-0000-000000000001\",\n    \"00000000-0000-0000-0000-000000000003\"\n  ],\n  \"districtIds\": [\n    \"00000000-0000-0000-0000-000000000001\",\n    \"00000000-0000-0000-0000-000000000004\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/guides/{{guide_id}}/profile",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "guides", "{{guide_id}}", "profile"]
+            },
+            "description": "Update guide profile\n- Requires authentication\n- Can update: title, bio, experience, etc.\n- Must provide valid languages, specialties, districts\n- Status: 200 OK"
+          },
+          "response": []
+        },
+        {
+          "name": "3. Delete Guide (User)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/guides/{{guide_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "guides", "{{guide_id}}"]
+            },
+            "description": "Delete guide (soft delete)\n- Requires authentication\n- Performs soft delete (IsDeleted = true)\n- Data is preserved, can be recovered\n- Status: 204 No Content"
+          },
+          "response": []
+        },
+        {
+          "name": "4. Get Guide by Slug",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/guides/{{guide_slug}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "guides", "{{guide_slug}}"]
+            },
+            "description": "Retrieve guide profile by slug\n- No authentication required\n- Returns guide details\n- Status: 200 OK"
+          },
+          "response": []
+        },
+        {
+          "name": "5. Search Guides",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/guides?searchTerm=Istanbul&page=1&pageSize=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "guides"],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "Istanbul"
+                },
+                {
+                  "key": "districtId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "specialtyId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "languageId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "minRating",
+                  "value": "4.0",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Search guides with filters\n- No authentication required\n- Query parameters: searchTerm, districtId, specialtyId, languageId, minRating, page, pageSize\n- Status: 200 OK"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Guide CRUD - Admin",
+      "item": [
+        {
+          "name": "1. Get All Guides (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/guides?status=0&searchTerm=",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "guides"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "0",
+                  "description": "0=Pending, 1=Approved, 2=Rejected, 3=Suspended"
+                },
+                {
+                  "key": "searchTerm",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Get all guides (admin view)\n- Requires admin authentication\n- Filters: status, searchTerm\n- Status: 200 OK"
+          },
+          "response": []
+        },
+        {
+          "name": "2. Get Guide Details (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/guides/{{guide_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "guides", "{{guide_id}}"]
+            },
+            "description": "Get guide details (admin)\n- Requires admin authentication\n- Status: 200 OK"
+          },
+          "response": []
+        },
+        {
+          "name": "3. Approve Guide",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/guides/{{guide_id}}/approve",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "guides", "{{guide_id}}", "approve"]
+            },
+            "description": "Approve pending guide\n- Requires admin authentication\n- Changes status to Approved\n- Status: 200 OK"
+          },
+          "response": []
+        },
+        {
+          "name": "4. Reject Guide",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rejectionReason\": \"License number could not be verified\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/guides/{{guide_id}}/reject",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "guides", "{{guide_id}}", "reject"]
+            },
+            "description": "Reject pending guide\n- Requires admin authentication\n- Changes status to Rejected\n- Status: 200 OK"
+          },
+          "response": []
+        },
+        {
+          "name": "5. Delete Guide (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/guides/{{guide_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "guides", "{{guide_id}}"]
+            },
+            "description": "Delete guide (admin)\n- Requires admin authentication\n- Performs soft delete (IsDeleted = true)\n- Status: 204 No Content"
+          },
+          "response": []
+        },
+        {
+          "name": "6. Toggle Featured",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/guides/{{guide_id}}/toggle-featured",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "guides", "{{guide_id}}", "toggle-featured"]
+            },
+            "description": "Toggle featured status\n- Requires admin authentication\n- Toggles IsFeatured flag\n- Status: 200 OK"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Utilities",
+      "item": [
+        {
+          "name": "Get All Languages",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/languages",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "languages"]
+            },
+            "description": "Get all available languages\n- Use languageIds from response in Create/Update"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Specialties",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/specialties",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "specialties"]
+            },
+            "description": "Get all available specialties\n- Use specialtyIds from response in Create/Update"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Districts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/districts",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "districts"]
+            },
+            "description": "Get all available districts\n- Use districtIds from response in Create/Update"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://localhost:5001",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string",
+      "description": "JWT token from login"
+    },
+    {
+      "key": "admin_token",
+      "value": "",
+      "type": "string",
+      "description": "JWT token with admin role"
+    },
+    {
+      "key": "guide_id",
+      "value": "",
+      "type": "string",
+      "description": "Guide ID from create response"
+    },
+    {
+      "key": "guide_slug",
+      "value": "ahmet-yilmaz-istanbul",
+      "type": "string",
+      "description": "Guide slug for public profile"
+    }
+  ]
+}

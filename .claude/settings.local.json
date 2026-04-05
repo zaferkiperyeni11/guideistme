@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet --version)",
+      "Bash(dotnet new:*)",
+      "Bash(dotnet sln:*)",
+      "Bash(dotnet add:*)",
+      "Bash(dotnet test:*)",
+      "Bash(\"c:\\\\Users\\\\Zafer\\\\Downloads\\\\guideistme\\\\TEST_SONUÇLARI.txt\":*)",
+      "Bash(ls -1 *.md TEST_SONUÇLARI.txt)",
+      "Bash(dotnet build:*)",
+      "Bash(ls -d src/IstGuide.Application/Features/*/)",
+      "Bash(ls -1 src/IstGuide.Application/Features/Guides/Commands/*/)",
+      "Bash(ls -1 src/IstGuide.Application/Features/Reviews/Commands/*/)",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)"
+    ]
+  }
+}

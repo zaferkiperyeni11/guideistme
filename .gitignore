@@ -1,0 +1,29 @@
+# .NET
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+
+# User-specific
+*.suo
+*.user
+*.userossx
+*.sln.docstates
+.vs/
+
+# Node (WebUI için)
+node_modules/
+
+# Logs
+logs/
+
+# Build error logs
+build_errors*.txt
+run_error.txt

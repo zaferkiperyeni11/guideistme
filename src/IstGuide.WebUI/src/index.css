@@ -1,0 +1,121 @@
+:root {
+  /* Ana Renkler (Mavi) */
+  --color-primary:       #3B82F6;     /* Kurumsal Mavi (CTA butonları, logo) */
+  --color-primary-dark:  #2563EB;
+  --color-primary-light: #60A5FA;
+
+  /* Metin Renkleri (Siyah Tonlar) */
+  --color-bg:            #FFFFFF;
+  --color-surface:       #F7F7F7;
+  --color-border:        #E5E5E5;
+  --color-text-primary:  #141414;     /* Koyu Siyah */
+  --color-text-secondary:#333333;     /* Gri Siyah */
+  --color-text-muted:    #666666;
+
+  /* Durum Renkleri */
+  --color-success:       #00A67E;
+  --color-warning:       #FFB800;
+  --color-error:         #E53E3E;
+  --color-info:          #3182CE;
+
+  /* Rating Yıldız */
+  --color-star:          #FFB800;
+
+  /* WhatsApp */
+  --color-whatsapp:      #25D366;
+
+  /* Tipografi */
+  --font-family:         'Inter', -apple-system, sans-serif;
+  --font-size-xs:        0.75rem;
+  --font-size-sm:        0.875rem;
+  --font-size-base:      1rem;
+  --font-size-lg:        1.125rem;
+  --font-size-xl:        1.25rem;
+  --font-size-2xl:       1.5rem;
+  --font-size-3xl:       2rem;
+
+  /* Spacing */
+  --spacing-xs:          0.25rem;
+  --spacing-sm:          0.5rem;
+  --spacing-md:          1rem;
+  --spacing-lg:          1.5rem;
+  --spacing-xl:          2rem;
+  --spacing-2xl:         3rem;
+
+  /* Border Radius */
+  --radius-sm:           0.375rem;
+  --radius-md:           0.5rem;
+  --radius-lg:           0.75rem;
+  --radius-xl:           1rem;
+  --radius-full:         50%;
+
+  /* Shadows */
+  --shadow-sm:           0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:           0 4px 6px rgba(0,0,0,0.07);
+  --shadow-lg:           0 10px 15px rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: var(--spacing-2xl) auto;
+  padding: var(--spacing-xl);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  color: white;
+}
