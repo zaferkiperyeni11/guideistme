@@ -93,7 +93,7 @@ const Guides: React.FC = () => {
                     <tbody>
                         {guides.map(guide => (
                             <tr key={guide.id} style={{ borderBottom: '1px solid #fafafa' }}>
-                                <td style={{ padding: '0.5rem' }}>{guide.firstName} {guide.lastName}</td>
+                                <td style={{ padding: '0.5rem' }}>{guide.fullName}</td>
                                 <td>{guide.title}</td>
                                 <td>{guide.email}</td>
                                 <td>{guide.status}</td>
