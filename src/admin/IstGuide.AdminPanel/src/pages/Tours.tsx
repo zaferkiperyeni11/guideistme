@@ -3,7 +3,7 @@ import api from '../services/api';
 
 const Tours: React.FC = () => {
     const [tours, setTours] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [_loading, setLoading] = useState(true);
     const [newTour, setNewTour] = useState({ title: '', description: '', price: 0, duration: '' });
 
     useEffect(() => {
