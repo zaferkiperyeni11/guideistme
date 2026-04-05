@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Geliştirme ortamında (localhost) API'ye giden base url
 const api = axios.create({
-  baseURL: 'https://localhost:5001/api/v1',
+  baseURL: 'http://istguideme.runasp.net/api/v1',
   headers: {
     'Content-Type': 'application/json'
   }
