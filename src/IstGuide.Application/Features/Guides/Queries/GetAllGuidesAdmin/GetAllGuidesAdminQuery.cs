@@ -12,6 +12,8 @@ public record GetAllGuidesAdminQuery : IRequest<IReadOnlyList<GuideAdminDto>>
 
 public class GuideAdminDto : GuideListDto
 {
+    public string Email { get; set; } = default!;
+    public string PhoneNumber { get; set; } = default!;
     public GuideStatus Status { get; set; }
     public DateTime CreatedAt { get; set; }
     public int ProfileViewCount { get; set; }
