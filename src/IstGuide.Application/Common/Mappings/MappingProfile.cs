@@ -1,6 +1,7 @@
 using AutoMapper;
 using IstGuide.Application.Features.Guides.Queries.GetGuideBySlug;
 using IstGuide.Application.Features.Guides.Queries.GetApprovedGuides;
+using IstGuide.Application.Features.Guides.Queries.GetAllGuidesAdmin;
 using IstGuide.Application.Features.Reviews.Queries.GetGuideReviews;
 using IstGuide.Domain.Entities;
 
@@ -17,6 +18,11 @@ public class MappingProfile : Profile
             .ForMember(d => d.Districts, o => o.MapFrom(s => s.ServiceDistricts.Select(d => d.District.Name).ToList()))
             .ForMember(d => d.Status, o => o.MapFrom(s => s.Status.ToString()))
             .ForMember(d => d.WhatsAppUrl, o => o.MapFrom(s => s.PhoneNumber != null ? $"https://wa.me/{s.PhoneNumber.Replace("+", "")}" : null));
+
+        CreateMap<Guide, GuideAdminDto>()
+            .IncludeBase<Guide, GuideListDto>()
+            .ForMember(d => d.Status, o => o.MapFrom(s => s.Status))
+            .ForMember(d => d.CreatedAt, o => o.MapFrom(s => s.CreatedAt));
 
         CreateMap<Guide, GuideDetailDto>()
             .IncludeBase<Guide, GuideListDto>()
