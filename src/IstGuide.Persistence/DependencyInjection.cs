@@ -50,6 +50,7 @@ public static class DependencyInjection
         })
         .AddRoles<IdentityRole>()
         .AddEntityFrameworkStores<ApplicationDbContext>()
+	.AddSignInManager()
         .AddDefaultTokenProviders();
 
         return services;
