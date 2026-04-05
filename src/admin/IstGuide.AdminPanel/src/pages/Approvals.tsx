@@ -20,7 +20,7 @@ const Approvals: React.FC = () => {
 
   const handleApprove = async (id: string) => {
     try {
-      await api.put(`/guides/${id}/approve`);
+      await api.put(`https://istguideme.runasp.net/api/admin/guides/${id}/approve`);
       alert("Guide approved successfully!");
       fetchPending();
     } catch (err) {
