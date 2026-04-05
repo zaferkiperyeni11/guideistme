@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
+import axios from 'axios';
 
 const Approvals: React.FC = () => {
   const [guides, setGuides] = useState<any[]>([]);
@@ -20,7 +21,8 @@ const Approvals: React.FC = () => {
 
   const handleApprove = async (id: string) => {
     try {
-      await api.put(`https://istguideme.runasp.net/api/admin/guides/${id}/approve`);
+      const token = localStorage.getItem('admin_token');
+await axios.put(`https://istguideme.runasp.net/api/admin/guides/${id}/approve`, {}, { headers: { Authorization: `Bearer ${token}` } });
       alert("Guide approved successfully!");
       fetchPending();
     } catch (err) {
